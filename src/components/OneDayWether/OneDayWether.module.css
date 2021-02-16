@@ -1,0 +1,19 @@
+.list {
+  width: 70%;
+  min-width: 350px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+.list p {
+  margin: 0;
+}
+.cityName p {
+  color: blueviolet;
+}
+
+.element {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+}

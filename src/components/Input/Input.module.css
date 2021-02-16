@@ -1,0 +1,36 @@
+.inputBlock {
+  position: relative;
+  width: 30%;
+  min-width: 200px;
+}
+.input {
+  width: 100%;
+  border: 1px solid rgb(103, 103, 245);
+  border-radius: 3px;
+  font-size: 15px;
+  color: rgb(103, 103, 245);
+  min-width: 80px;
+  min-height: 40px;
+  padding-left: 5px;
+}
+
+.button {
+  position: absolute;
+  cursor: pointer;
+
+  border: none;
+  border-radius: 50%;
+  color: white;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-image: url("../../public/images/92909623-magnifier-icon-cartoon-style.jpg");
+  background-position: center;
+  background-size: contain;
+  padding: 0;
+}
+.button:focus {
+  outline: none;
+}

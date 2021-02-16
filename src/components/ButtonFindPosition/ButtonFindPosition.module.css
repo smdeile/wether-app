@@ -1,0 +1,11 @@
+.button {
+  background-image: url(../../public/images/geolocation.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  width: 90px;
+  height: 60px;
+  padding: 0;
+}
