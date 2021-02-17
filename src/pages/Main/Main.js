@@ -11,7 +11,7 @@ function Main() {
   const dispatch = useDispatch(setCities);
   const { isLoading } = useSelector((state) => state);
 
-  const { wether, citiesStore } = useSelector((state) => state);
+  const { wether, citiesStore, error } = useSelector((state) => state);
 
   const city = wether?.name;
   //Set cities to LocalStorage and to store
@@ -28,7 +28,7 @@ function Main() {
       setCitiesLocal(citiesLS);
       dispatch(setCities(citiesLS));
     }
-  }, []);
+  }, [error]);
 
   const onHandleDeleteCity = (id) => {
     const newCities = cities?.filter((city) => city.id !== id);
@@ -39,6 +39,7 @@ function Main() {
 
   return (
     <div className={css.wrapper}>
+      {error && <h2>Some problem...Please, try again!</h2>}
       {isLoading ? (
         <h2>wait, please...</h2>
       ) : (

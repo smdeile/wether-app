@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { fetchWether } from "../../redux/wether/wetherActions";
@@ -7,7 +7,11 @@ import css from "./Input.module.css";
 function Input({ history }) {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
-  const wether = useSelector((state) => state.wether);
+  const error = useSelector((state) => state.error);
+
+  useEffect(() => {
+    error && history.replace("/");
+  }, [error]);
 
   const onChange = (e) => setValue(e.target.value);
 
