@@ -1,4 +1,8 @@
-import axios from "axios";
+import {
+  getFiveDaysWeatherFetch,
+  getWeatherByPositionFetch,
+  getWeatherFetch,
+} from "../../services/api";
 import {
   SET_CITIES,
   FETCH_WETHER_REQUEST,
@@ -7,11 +11,6 @@ import {
   FETCH_FIVE_DAYS_WETHER_SUCCESS,
 } from "./wetherTypes";
 require("dotenv").config();
-
-const BASE_URL = "https://api.openweathermap.org/data/2.5/";
-const key = process.env.REACT_APP_SECRET_KEY;
-
-const temperatureFormatC = "&units=metric";
 
 export const setCities = (cities) => {
   return { type: SET_CITIES, payload: cities };
@@ -31,53 +30,42 @@ export const fetchWetherFailure = (err) => {
 };
 
 export const fetchWether = (city) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(fetchWetherRequest());
-    async function getWeather(city) {
-      try {
-        const finalUrl = `${BASE_URL}weather?q=${city}${temperatureFormatC}&appid=${key}`;
 
-        const weatherResponse = await axios.get(finalUrl);
+    try {
+      const weatherResponse = await getWeatherFetch(city);
 
-        dispatch(fetchWetherSuccess(weatherResponse.data));
-      } catch (error) {
-        console.log("error: ", error);
-        dispatch(fetchWetherFailure(error));
-      }
+      dispatch(fetchWetherSuccess(weatherResponse));
+    } catch (error) {
+      dispatch(fetchWetherFailure(error));
     }
-    getWeather(city);
   };
 };
 
 export const getWeatherByPosition = (coords) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(fetchWetherRequest());
 
-    async function getWether(coords) {
-      try {
-        const finalUrl = `${BASE_URL}weather?lat=${coords.lat}&lon=${coords.lon}${temperatureFormatC}&appid=${key}`;
-        const weatherResponse = await axios.get(finalUrl);
-        dispatch(fetchWetherSuccess(weatherResponse.data));
-      } catch (error) {
-        dispatch(fetchWetherFailure(error));
-      }
+    try {
+      const weatherResponse = await getWeatherByPositionFetch(coords);
+      dispatch(fetchWetherSuccess(weatherResponse));
+    } catch (error) {
+      dispatch(fetchWetherFailure(error));
     }
-    getWether(coords);
   };
 };
 
 export const getFiveDaysWeather = (city) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(fetchWetherRequest());
-    async function getWether(city) {
-      try {
-        const finalUrl = `${BASE_URL}forecast?q=${city}${temperatureFormatC}&appid=${key}`;
-        const weatherResponse = await axios.get(finalUrl);
-        dispatch(fetchFiveDaysWetherSuccess(weatherResponse.data.list));
-      } catch (error) {
-        alert(error);
-      }
+
+    try {
+      const weatherResponse = await getFiveDaysWeatherFetch(city);
+
+      dispatch(fetchFiveDaysWetherSuccess(weatherResponse));
+    } catch (error) {
+      dispatch(fetchWetherFailure(error));
     }
-    getWether(city);
   };
 };

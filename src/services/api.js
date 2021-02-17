@@ -1,44 +1,36 @@
-// import axios from "axios";
+import axios from "axios";
+require("dotenv").config();
 
-// const API = {
-//   BASE_URL: "https://api.openweathermap.org/data/2.5/",
+axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5/";
+const key = process.env.REACT_APP_SECRET_KEY;
+const temperatureFormatC = "&units=metric";
 
-//   key: "056c60206db5e8ab2d93c33ab14167dc",
+export async function getWeatherFetch(city) {
+  try {
+    const finalUrl = `weather?q=${city}${temperatureFormatC}&appid=${key}`;
+    const weatherResponse = await axios.get(finalUrl);
+    return weatherResponse.data;
+  } catch (error) {
+    return error;
+  }
+}
 
-//   temperatureFormatC: "&units=metric",
+export async function getFiveDaysWeatherFetch(city) {
+  try {
+    const finalUrl = `forecast?q=${city}${temperatureFormatC}&appid=${key}`;
+    const weatherResponse = await axios.get(finalUrl);
+    return weatherResponse.data.list;
+  } catch (error) {
+    return error;
+  }
+}
 
-//   // async getWeather(city) {
-//   //   try {
-//   //     const finalUrl = `${this.BASE_URL}find?q=${city}${this.taemperatureFormatC}&appid=${this.key}`;
-//   //     const weatherResponse = await axios.get(finalUrl);
-
-//   //     return weatherResponse.data.list[0];
-//   //   } catch (error) {
-//   //     return error;
-//   //   }
-//   // },
-
-//   async getFiveDaysWeather(city) {
-//     try {
-//       const finalUrl = `${this.BASE_URL}forecast?q=${city}${this.temperatureFormatC}&appid=${this.key}`;
-//       const weatherResponse = await axios.get(finalUrl);
-
-//       return weatherResponse.data;
-//     } catch (error) {
-//       alert(error);
-//     }
-//   },
-
-//   async getWeatherByPosition(coords) {
-//     try {
-//       const finalUrl = `${this.BASE_URL}weather?lat=${coords.lat}&lon=${coords.lon}${this.temperatureFormatC}&appid=${this.key}`;
-//       const weatherResponse = await axios.get(finalUrl);
-
-//       return weatherResponse.data;
-//     } catch (error) {
-//       alert("Error");
-//     }
-//   },
-// };
-
-// export default API;
+export async function getWeatherByPositionFetch(coords) {
+  try {
+    const finalUrl = `weather?lat=${coords.lat}&lon=${coords.lon}${temperatureFormatC}&appid=${key}`;
+    const weatherResponse = await axios.get(finalUrl);
+    return weatherResponse.data;
+  } catch (error) {
+    return error;
+  }
+}

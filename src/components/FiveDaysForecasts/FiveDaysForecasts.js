@@ -1,8 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import css from "./FiveDaysForecasts.module.css";
 
-function FiveDaysForecasts({ wetherFiveDays }) {
+function FiveDaysForecasts() {
+  const { wetherFiveDays } = useSelector((state) => state);
+
   return (
     <ul className={css.container}>
       {wetherFiveDays?.map((el) => (
