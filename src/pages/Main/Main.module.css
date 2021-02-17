@@ -1,2 +1,27 @@
-.wrapper {
+.wrapper a {
+  text-decoration: none;
+  font-size: 20px;
+}
+.buttonClose {
+  cursor: pointer;
+  margin-left: 5px;
+  border: none;
+  border-radius: 50%;
+  color: blue;
+  font-size: 22px;
+}
+.savedCities {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+.savedCities li {
+  padding: 5px;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+.savedCities li:not(:last-of-type) {
+  margin-right: 5px;
 }

@@ -1,4 +1,5 @@
 import {
+  SET_CITIES,
   FETCH_WETHER_REQUEST,
   FETCH_WETHER_SUCCESS,
   FETCH_WETHER_FAILURE,
@@ -7,7 +8,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  city: "",
+  citiesStore: null,
   wether: null,
   wetherFiveDays: null,
   position: null,
@@ -16,6 +17,12 @@ const initialState = {
 
 const wetherReducer = (state = initialState, actions) => {
   switch (actions.type) {
+    case SET_CITIES:
+      return {
+        ...state,
+        citiesStore: actions.payload,
+      };
+
     case FETCH_WETHER_REQUEST:
       return {
         ...state,
@@ -24,8 +31,8 @@ const wetherReducer = (state = initialState, actions) => {
 
     case FETCH_WETHER_SUCCESS:
       return {
+        ...state,
         wether: actions.payload,
-        city: actions.payload.name,
         isLoading: false,
         error: "",
       };

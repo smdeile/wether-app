@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { fetchWether } from "../../redux/wether/wetherActions";
 import css from "./Input.module.css";
 
-function Input() {
+function Input({ history }) {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
+  const wether = useSelector((state) => state.wether);
 
   const onChange = (e) => setValue(e.target.value);
 
@@ -33,4 +34,4 @@ function Input() {
   );
 }
 
-export default Input;
+export default withRouter(Input);
