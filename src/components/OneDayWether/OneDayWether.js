@@ -3,7 +3,7 @@ import moment from "moment";
 import { useSelector } from "react-redux";
 import css from "./OneDayWether.module.css";
 
-function OneDayWether() {
+const OneDayWether = () => {
   const { wether } = useSelector((state) => state);
 
   function getTime(time) {
@@ -56,6 +56,6 @@ function OneDayWether() {
       )}
     </>
   );
-}
+};
 
 export default OneDayWether;

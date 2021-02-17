@@ -4,7 +4,7 @@ import getMyPosition from "../../services/nav";
 import { getWeatherByPosition } from "../../redux/wether/wetherActions";
 import css from "./ButtonFindPosition.module.css";
 
-function ButtonFindPosition() {
+const ButtonFindPosition = () => {
   const dispatch = useDispatch();
 
   const handleFindPosition = (evt) => {
@@ -20,6 +20,6 @@ function ButtonFindPosition() {
     }
   }
   return <button className={css.button} onClick={handleFindPosition}></button>;
-}
+};
 
 export default ButtonFindPosition;

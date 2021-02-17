@@ -4,7 +4,7 @@ import css from "./Nav.module.css";
 import Input from "../../components/Input/Input";
 import ButtonFindPosition from "../ButtonFindPosition/ButtonFindPosition";
 
-function Nav() {
+const Nav = () => {
   return (
     <nav className={css.navBar}>
       <NavLink
@@ -19,6 +19,6 @@ function Nav() {
       <Input />
     </nav>
   );
-}
+};
 
 export default Nav;

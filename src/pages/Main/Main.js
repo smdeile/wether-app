@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCities } from "../../redux/wether/wetherActions";
 import css from "./Main.module.css";
 
-function Main() {
+const Main = () => {
   const [cities, setCitiesLocal] = useState(null);
   const dispatch = useDispatch(setCities);
   const { isLoading } = useSelector((state) => state);
@@ -28,7 +28,7 @@ function Main() {
       setCitiesLocal(citiesLS);
       dispatch(setCities(citiesLS));
     }
-  }, [error]);
+  }, [error, city]);
 
   const onHandleDeleteCity = (id) => {
     const newCities = cities?.filter((city) => city.id !== id);
@@ -77,6 +77,6 @@ function Main() {
       {}
     </div>
   );
-}
+};
 
 export default Main;

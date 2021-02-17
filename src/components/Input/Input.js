@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { fetchWether } from "../../redux/wether/wetherActions";
 import css from "./Input.module.css";
 
-function Input({ history }) {
+const Input = ({ history }) => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
@@ -36,6 +36,6 @@ function Input({ history }) {
       <button className={css.button} onClick={onSubmit}></button>
     </div>
   );
-}
+};
 
 export default withRouter(Input);

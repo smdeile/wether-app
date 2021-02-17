@@ -7,7 +7,7 @@ import {
 import RenderWetherDataComponent from "../../components/RenderWetherDataComponent/RenderWetherDataComponent";
 import { withRouter } from "react-router-dom";
 
-function City({ match, history }) {
+const City = ({ match, history }) => {
   const { cityName } = match.params;
   const { wether, isLoading, wetherFiveDays } = useSelector((state) => state);
   const city = wether?.name;
@@ -34,6 +34,6 @@ function City({ match, history }) {
       )}
     </>
   );
-}
+};
 
 export default withRouter(City);

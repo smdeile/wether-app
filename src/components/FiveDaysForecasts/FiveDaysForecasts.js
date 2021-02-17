@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import css from "./FiveDaysForecasts.module.css";
 
-function FiveDaysForecasts() {
+const FiveDaysForecasts = () => {
   const { wetherFiveDays } = useSelector((state) => state);
 
   return (
@@ -26,6 +26,6 @@ function FiveDaysForecasts() {
       ))}
     </ul>
   );
-}
+};
 
 export default FiveDaysForecasts;

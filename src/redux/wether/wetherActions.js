@@ -10,7 +10,6 @@ import {
   FETCH_WETHER_FAILURE,
   FETCH_FIVE_DAYS_WETHER_SUCCESS,
 } from "./wetherTypes";
-require("dotenv").config();
 
 export const setCities = (cities) => {
   return { type: SET_CITIES, payload: cities };
