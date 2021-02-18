@@ -37,6 +37,7 @@ export const fetchWether = (city) => {
 
       dispatch(fetchWetherSuccess(weatherResponse));
     } catch (error) {
+      console.log("error: ", error);
       dispatch(fetchWetherFailure(error));
     }
   };

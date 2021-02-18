@@ -16,6 +16,7 @@ const initialState = {
 };
 
 const wetherReducer = (state = initialState, actions) => {
+  console.log("state: ", state);
   switch (actions.type) {
     case SET_CITIES:
       return {

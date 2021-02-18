@@ -11,7 +11,7 @@ export async function getWeatherFetch(city) {
     const weatherResponse = await axios.get(finalUrl);
     return weatherResponse.data;
   } catch (error) {
-    return error;
+    throw error;
   }
 }
 
@@ -21,7 +21,7 @@ export async function getFiveDaysWeatherFetch(city) {
     const weatherResponse = await axios.get(finalUrl);
     return weatherResponse.data.list;
   } catch (error) {
-    return error;
+    throw error;
   }
 }
 
@@ -31,6 +31,6 @@ export async function getWeatherByPositionFetch(coords) {
     const weatherResponse = await axios.get(finalUrl);
     return weatherResponse.data;
   } catch (error) {
-    return error;
+    throw error;
   }
 }

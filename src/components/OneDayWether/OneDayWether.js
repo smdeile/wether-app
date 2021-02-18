@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import css from "./OneDayWether.module.css";
 
 const OneDayWether = () => {
-  const { wether } = useSelector((state) => state);
+  const { wether, error } = useSelector((state) => state);
+  console.log("error: ", error);
+  console.log("wether: ", wether);
 
   function getTime(time) {
     const date = moment(time * 1000).format("LLLL");
@@ -21,7 +23,7 @@ const OneDayWether = () => {
 
           <li className={css.element}>
             <p className={css.elementName}>Temperature: </p>
-            <p>{Math.floor(wether.main.temp)} °С</p>
+            <p>{Math.floor(wether.main?.temp)} °С</p>
           </li>
 
           <li className={css.element}>
@@ -36,7 +38,7 @@ const OneDayWether = () => {
 
           <li className={css.element}>
             <p className={css.elementName}>Wind speed: </p>
-            <p>{wether.wind.speed} meter/sec</p>
+            <p>{wether.wind?.speed} meter/sec</p>
           </li>
 
           <li className={css.element}>
@@ -46,11 +48,11 @@ const OneDayWether = () => {
 
           <li className={css.element}>
             <p className={css.elementName}>Sunrise: </p>
-            <p>{getTime(wether.sys.sunrise)}</p>
+            <p>{getTime(wether.sys?.sunrise)}</p>
           </li>
           <li className={css.element}>
             <p className={css.elementName}>Sunset: </p>
-            <p>{getTime(wether.sys.sunset)}</p>
+            <p>{getTime(wether.sys?.sunset)}</p>
           </li>
         </ul>
       )}
