@@ -6,6 +6,7 @@ import css from "./Input.module.css";
 
 const Input = ({ history }) => {
   const [value, setValue] = useState("");
+  console.log("value: ", value);
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
 
@@ -13,9 +14,12 @@ const Input = ({ history }) => {
     error && history.replace("/");
   }, [error]);
 
-  const onChange = (e) => setValue(e.target.value);
+  const onChange = (e) => {
+    setValue(e.currentTarget.value);
+  };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     if (value !== "") {
       dispatch(fetchWether(value));
     } else alert("Enter existing city, please");
