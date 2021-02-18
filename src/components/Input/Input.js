@@ -6,7 +6,7 @@ import css from "./Input.module.css";
 
 const Input = ({ history }) => {
   const [value, setValue] = useState("");
-  console.log("value: ", value);
+
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
 
@@ -15,7 +15,7 @@ const Input = ({ history }) => {
   }, [error]);
 
   const onChange = (e) => {
-    setValue(e.currentTarget.value);
+    setValue(e.target.value);
   };
 
   const onSubmit = (e) => {
