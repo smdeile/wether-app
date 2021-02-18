@@ -1,6 +1,7 @@
 .button {
   background-image: url(../../public/images/geolocation.jpg);
-  background-size: cover;
+  background-color: transparent;
+  background-size: 90px 60px;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -8,4 +9,14 @@
   width: 90px;
   height: 60px;
   padding: 0;
+  position: relative;
+}
+.button::before {
+  content: "Find my!";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(63, 19, 104);
+  width: fit-content;
 }

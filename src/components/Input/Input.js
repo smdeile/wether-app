@@ -23,7 +23,7 @@ const Input = ({ history }) => {
   };
 
   return (
-    <div className={css.inputBlock}>
+    <form className={css.inputBlock} onSubmit={onSubmit}>
       <input
         type="text"
         placeholder="enter city name"
@@ -33,8 +33,8 @@ const Input = ({ history }) => {
         autoFocus
         onChange={onChange}
       />
-      <button className={css.button} onClick={onSubmit}></button>
-    </div>
+      <button type="submit" className={css.button}></button>
+    </form>
   );
 };
 
